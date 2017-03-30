@@ -13,11 +13,12 @@
     <legend>Service Ticket #@string.Format("A0141{0:d2}", Model.ID)</legend>
 
     <div class="actions">        
-        <!--@Html.ActionLink("Assign", "Assign", new { id = Model.ID }, new { @class = "glossyBox" }) -->
+        @*remove assign andclose for not since not work (Jack First Sprint)*@
+        @*@Html.ActionLink("Assign", "Assign", new { id = Model.ID }, new { @class = "glossyBox" }) *@
         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "glossyBox" }) 
         @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "glossyBox" })
         @Html.ActionLink("Escalate", "Escalate", new { id = Model.ID }, new { @class = "glossyBox" }) 
-        @Html.ActionLink("Close", "Close", new { id = Model.ID }, new { @class = "glossyBox" })
+        @*@Html.ActionLink("Close", "Close", new { id = Model.ID }, new { @class = "glossyBox" })*@
     </div>
 
     <h2 class="display-label">Title</h2>
