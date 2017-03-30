@@ -67,6 +67,12 @@ namespace FabrikamFiber.Web.Controllers
             return View(viewModel);
         }
 
+        [ActionName("ViewSelf")]
+        public ViewResult ViewSelf()
+        {
+            return View(this.serviceTicketRepository.AllIncluding(serviceticket => serviceticket.Customer, serviceticket => serviceticket.CreatedBy, serviceticket => serviceticket.AssignedTo));
+        }
+
         [HttpPost]
         [ActionName("Schedule")]
         public ActionResult AssignSchedule(int serviceTicketId, int employeeId, float startTime)
