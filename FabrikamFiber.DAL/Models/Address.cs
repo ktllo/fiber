@@ -8,7 +8,7 @@ namespace FabrikamFiber.DAL.Models
         public string City { get; set; }
 
         public string State { get; set; }
-
+        // The given regEx is for USA. The commented out one is US OR UK
         //[RegularExpression(@"\d{5}-\d{4}|\d{5}|\d{9}|[ABCEGHJ-NPRSTVXY]{1}[0-9]{1}[ABCEGHJ-NPRSTV-Z]{1}[ ]?[0-9]{1}[ABCEGHJ-NPRSTV-Z]{1}[0-9]{1}")]
         [RegularExpression(@"\d{5}-\d{4}|\d{5}|\d{9}")]
         public string Zip { get; set; }
