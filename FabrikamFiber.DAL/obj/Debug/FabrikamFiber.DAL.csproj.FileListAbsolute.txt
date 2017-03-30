@@ -7,6 +7,5 @@ C:\Users\ASL\Desktop\fabrikam-master\fabrikam-master\Code\FabrikamFiber.CallCent
 C:\Users\ASL\Source\Repos\git\777\FabrikamFiber.DAL\bin\Debug\FabrikamFiber.DAL.dll
 C:\Users\ASL\Source\Repos\git\777\FabrikamFiber.DAL\bin\Debug\FabrikamFiber.DAL.pdb
 C:\Users\ASL\Source\Repos\git\777\FabrikamFiber.DAL\bin\Debug\EntityFramework.dll
-C:\Users\ASL\Source\Repos\git\777\FabrikamFiber.DAL\obj\Debug\FabrikamFiber.DAL.csprojResolveAssemblyReference.cache
 C:\Users\ASL\Source\Repos\git\777\FabrikamFiber.DAL\obj\Debug\FabrikamFiber.DAL.dll
 C:\Users\ASL\Source\Repos\git\777\FabrikamFiber.DAL\obj\Debug\FabrikamFiber.DAL.pdb
