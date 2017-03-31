@@ -195,7 +195,20 @@ namespace FabrikamFiber.Web.Controllers
 
             return RedirectToAction("Index");
         }
-
+        public ActionResult Close(int id)
+        {
+            return View(this.serviceTicketRepository.Find(id));
+        }
+        [HttpPost, ActionName("Close")]
+        public ActionResult CloseConfirmed(int id)
+        {
+            ServiceTicket st = this.serviceTicketRepository.Find(id);
+            st.Status = Status.Closed;
+            st.Closed = DateTime.Now;
+            this.serviceTicketRepository.InsertOrUpdate(st);
+            this.serviceTicketRepository.Save();
+            return RedirectToAction("Index");
+        }
         public JsonResult GetLogEntries(int id)
         {
             var result = this.serviceLogEntryRepository.All.Where(entry => entry.ServiceTicketID == id);
