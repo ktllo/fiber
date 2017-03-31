@@ -32,6 +32,10 @@ namespace FabrikamFiber.Web.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
+            //add null check
+            if (customer == null)
+                throw new System.ArgumentNullException();               
+
             //check model state
             if (ModelState.IsValid)
             {
