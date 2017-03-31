@@ -182,11 +182,25 @@ namespace FabrikamFiber.Web.Controllers
             return this.View();
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Close(int id)
         {
             return View(this.serviceTicketRepository.Find(id));
         }
 
+        public ActionResult Delete(int id)
+        {
+            return View(this.serviceTicketRepository.Find(id));
+        }
+        [HttpPost, ActionName("Close")]
+        public ActionResult CloseConfirmed(int id)
+        {
+            ServiceTicket st = this.serviceTicketRepository.Find(id);
+            st.Status = Status.Closed;
+            st.Closed = DateTime.Now;
+            this.serviceTicketRepository.InsertOrUpdate(st);
+            this.serviceTicketRepository.Save();
+            return RedirectToAction("Index");
+        }
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
