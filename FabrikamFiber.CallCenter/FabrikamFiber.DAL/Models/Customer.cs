@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel;
 
+    //Comment
     public class Customer
     {
         public int ID { get; set; }
