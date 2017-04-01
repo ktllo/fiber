@@ -14,12 +14,16 @@
 
     <div class="actions">        
         @*remove assign andclose for not since not work (Jack First Sprint)*@
-        @if (Model.Status != FabrikamFiber.DAL.Models.Status.Closed)
+        @if (Model.Status == FabrikamFiber.DAL.Models.Status.Closed)
+        {
+           @Html.ActionLink("Reopen", "Reopen", new { id = Model.ID }, new { @class = "glossyBox" })
+        }   
+        else
         {
             @*Jack 3rd sprint add if*@
             @Html.ActionLink("Assign", "Assign", new { id = Model.ID }, new { @class = "glossyBox" })
             @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "glossyBox" })
-        }        
+        }
         @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "glossyBox" })
         @*@Html.ActionLink("Escalate", "Escalate", new { id = Model.ID }, new { @class = "glossyBox" }) *@
         @if(Model.Status != FabrikamFiber.DAL.Models.Status.Closed)
