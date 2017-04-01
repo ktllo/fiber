@@ -196,17 +196,17 @@ namespace FabrikamFiber.Web.Controllers
             st.Closed = null;
             this.serviceTicketRepository.InsertOrUpdate(st);
             this.serviceTicketRepository.Save();
-            //var serviceLogEntry = new ServiceLogEntry
-            //{
-            //    ServiceTicket = st,
-            //    CreatedAt = DateTime.Now,
-            //    CreatedBy = st.CreatedBy,
-            //    CreatedByID = st.CreatedByID,
-            //    Description = "Ticket Reopened.",
-            //    ServiceTicketID = st.ID
-            //};
-            //this.serviceLogEntryRepository.InsertOrUpdate(serviceLogEntry);
-            //this.serviceLogEntryRepository.Save();
+            var serviceLogEntry = new ServiceLogEntry
+            {
+                //ServiceTicket = st,
+                CreatedAt = DateTime.Now,
+                CreatedBy = st.CreatedBy,
+                CreatedByID = st.CreatedByID,
+                Description = "Ticket Reopened.",
+                ServiceTicketID = st.ID
+            };
+            this.serviceLogEntryRepository.InsertOrUpdate(serviceLogEntry);
+            this.serviceLogEntryRepository.Save();
 
             return RedirectToAction("Index");
         }
