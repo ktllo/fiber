@@ -130,6 +130,7 @@ namespace FabrikamFiber.Web.Controllers
                     CreatedBy = serviceticket.CreatedBy,
                     CreatedByID = serviceticket.CreatedByID,
                     Description = "Created",
+                    ServiceTicketID = serviceticket.ID
                 };
 
                 this.serviceLogEntryRepository.InsertOrUpdate(serviceLogEntry);
@@ -207,10 +208,23 @@ namespace FabrikamFiber.Web.Controllers
             st.Closed = DateTime.Now;
             this.serviceTicketRepository.InsertOrUpdate(st);
             this.serviceTicketRepository.Save();
+            var serviceLogEntry = new ServiceLogEntry
+            {
+                ServiceTicket = st,
+                CreatedAt = DateTime.Now,
+                CreatedBy = st.CreatedBy,
+                CreatedByID = st.CreatedByID,
+                Description = "Ticket closed.",
+                ServiceTicketID = st.ID
+            };
+            this.serviceLogEntryRepository.InsertOrUpdate(serviceLogEntry);
+            this.serviceLogEntryRepository.Save();
+
             return RedirectToAction("Index");
         }
         public JsonResult GetLogEntries(int id)
         {
+            var tmp = this.serviceLogEntryRepository.All;
             var result = this.serviceLogEntryRepository.All.Where(entry => entry.ServiceTicketID == id);
             return Json(new { entries = result.ToList() }, JsonRequestBehavior.AllowGet);
         }
