@@ -183,6 +183,34 @@ namespace FabrikamFiber.Web.Controllers
             return this.View();
         }
 
+        public ActionResult Reopen(int id)
+        {
+            return View(this.serviceTicketRepository.Find(id));
+        }
+
+        [HttpPost, ActionName("Reopen")]
+        public ActionResult ReopenConfirmed(int id)
+        {
+            ServiceTicket st = this.serviceTicketRepository.Find(id);
+            st.Status = Status.Open;
+            st.Closed = null;
+            this.serviceTicketRepository.InsertOrUpdate(st);
+            this.serviceTicketRepository.Save();
+            var serviceLogEntry = new ServiceLogEntry
+            {
+                ServiceTicket = st,
+                CreatedAt = DateTime.Now,
+                CreatedBy = st.CreatedBy,
+                CreatedByID = st.CreatedByID,
+                Description = "Ticket Reopened.",
+                ServiceTicketID = st.ID
+            };
+            this.serviceLogEntryRepository.InsertOrUpdate(serviceLogEntry);
+            this.serviceLogEntryRepository.Save();
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Delete(int id)
         {
             return View(this.serviceTicketRepository.Find(id));
